@@ -74,6 +74,8 @@ public interface Path extends Comparable<Path>, Iterable<Path> {
 
   Path toRealPath(LinkOption... options) throws IOException;
 
+  String toString();
+
   URI toUri();
 
 }

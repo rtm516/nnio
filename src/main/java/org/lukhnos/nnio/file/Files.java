@@ -46,6 +46,31 @@ import java.util.regex.Pattern;
  */
 public class Files {
 
+  public static long copy(InputStream source, Path target, CopyOption... ignored) throws IOException {
+    if (ignored.length > 0) {
+      throw new UnsupportedOperationException("CopyOption not supported");
+    }
+
+    if (Files.exists(target)) {
+      throw new FileAlreadyExistsException("file already exists: " + target);
+    }
+
+    int bufSize = 16384;
+    byte buf[] = new byte[bufSize];
+    int length = source.available();
+
+    try (OutputStream fos = newOutputStream(target)) {
+
+      int read;
+      while ((read = source.read(buf)) > 0) {
+        fos.write(buf, 0, read);
+      }
+    }
+
+    return length;
+  }
+
+  /*
   public static Path copy(InputStream source, Path target, CopyOption... ignored) throws IOException {
     if (ignored.length > 0) {
       throw new UnsupportedOperationException("CopyOption not supported");
@@ -67,6 +92,7 @@ public class Files {
 
     return target;
   }
+  */
 
   public static Path copy(Path source, Path target, CopyOption... ignored) throws IOException {
     if (isDirectory(source)) {
