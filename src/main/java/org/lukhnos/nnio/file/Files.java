@@ -47,10 +47,6 @@ import java.util.regex.Pattern;
 public class Files {
 
   public static long copy(InputStream source, Path target, CopyOption... ignored) throws IOException {
-    if (ignored.length > 0) {
-      throw new UnsupportedOperationException("CopyOption not supported");
-    }
-
     if (Files.exists(target)) {
       throw new FileAlreadyExistsException("file already exists: " + target);
     }
