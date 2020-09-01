@@ -51,6 +51,7 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
+/*
 signing {
   // https://docs.gradle.org/2.9/userguide/signing_plugin.html
   required { isReleaseVersion && gradle.taskGraph.hasTask(uploadArchives) }
@@ -105,7 +106,6 @@ uploadArchives {
   }
 }
 
-/*
 gradle.taskGraph.whenReady { taskGraph ->
   if (taskGraph.allTasks.any { it instanceof Upload }) {
     if (!isReleaseVersion) {
