@@ -105,6 +105,7 @@ uploadArchives {
   }
 }
 
+/*
 gradle.taskGraph.whenReady { taskGraph ->
   if (taskGraph.allTasks.any { it instanceof Upload }) {
     if (!isReleaseVersion) {
@@ -146,3 +147,4 @@ gradle.taskGraph.whenReady { taskGraph ->
     console.printf '\nThanks.\n\n'
   }
 }
+*/
